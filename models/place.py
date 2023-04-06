@@ -47,9 +47,9 @@ class Place(BaseModel, Base):
                     review_list.append(review)
             return review_list
 
-        @property
+        """@property
         def amenities(self):
-            """returns the list of Amenity instances"""
+            "returns the list of Amenity instances"
             new_list = []
             all_amenities = models.storage.all(Amenity)
             for amenity in all_amenities.values():
@@ -60,4 +60,4 @@ class Place(BaseModel, Base):
         @amenities.setter
         def amenities(self, obj):
             if type(obj) == Amenity:
-                self.amenity_ids.appends(obj.id)
+                self.amenity_ids.appends(obj.id)"""

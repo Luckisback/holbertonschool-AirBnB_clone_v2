@@ -16,10 +16,16 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="delete")
 
-    if getenv("HBNB_TYPE_STORAGE") != "db":
-        @property
-        def cities(self):
-            """Returns the list of City instances"""
+    @property
+    def cities(self):
+        """Returns the list of City instances"""
+        if type(models.storage).__name__ == "DBStorage":
+            city_list = []
+            for city in self.cities:
+                city_list.append(city)
+            return city_list
+
+        else:
             city_list = []
             cities = models.storage.all(City)
             for city in cities.values():
