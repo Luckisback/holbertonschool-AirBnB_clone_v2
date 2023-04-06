@@ -14,6 +14,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import scoped_session
 
 
+
 class DBStorage:
     """Representes a class DBStorage"""
 
