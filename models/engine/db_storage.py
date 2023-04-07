@@ -12,7 +12,7 @@ from models.user import User
 from models.state import State
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import scoped_session
-
+from sqlalchemy.ext.declarative import declarative_base
 
 
 class DBStorage:
@@ -45,7 +45,7 @@ class DBStorage:
             for i in range(len(all_class)):
                 obj_list += self.__session.query(all_class[i]).all()
         else:
-            obj_list = self.__session.query(cls).all()
+            obj_list += self.__session.query(cls).all()
 
         for obj in obj_list:
             key = "{}.{}".format(obj.__class__.__name__, obj.id)
