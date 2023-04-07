@@ -2,6 +2,7 @@
 """Starts a Flask web application"""
 from flask import Flask, render_template
 from models import storage
+from models import *
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def teardown(exc):
+def teardown(exception):
     """Remove the current session."""
     storage.close()
 
