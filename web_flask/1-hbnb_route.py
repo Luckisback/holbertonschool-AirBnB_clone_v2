@@ -18,5 +18,4 @@ def hbnb():
 
 
 if __name__ == '__main__':
-	""" Making the the web page reachable on the local network """
     app.run(host='0.0.0.0', port='5000')
